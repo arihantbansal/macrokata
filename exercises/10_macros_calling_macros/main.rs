@@ -33,7 +33,18 @@ macro_rules! digit {
 
 ////////// DO NOT CHANGE ABOVE HERE /////////
 
-// TODO: create `number!()` macro.
+macro_rules! number {
+    ( $($name:tt) + ) => {
+        concat!($(digit!($name)),+)
+    }
+        // {
+        //     let mut s = String::new();
+        //     $(
+        //         s.push_str(digit!($name));
+        //     )+
+        //     s
+        // }
+}
 
 ////////// DO NOT CHANGE BELOW HERE /////////
 

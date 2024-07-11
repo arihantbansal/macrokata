@@ -10,9 +10,23 @@ fn print_hashmap<K: Debug, V: Debug>(hashmap: &HashMap<K, V>) {
 }
 ////////// DO NOT CHANGE ABOVE HERE /////////
 
-// TODO: Create a `pair!()` macro.
+macro_rules! pair {
+    ($l:literal => $e:expr) => {
+        ($l, $e)
+    };
+}
 
-// TODO: Create a `hashmap!()` macro that uses the `pair!()` macro.
+macro_rules! hashmap {
+    ( $($e:tt,)+ ) => {
+        {
+            let mut hm = HashMap::new();
+            $(
+                hm.insert(pair!($e));
+            )+
+            hm
+        }
+    };
+}
 
 ////////// DO NOT CHANGE BELOW HERE /////////
 
